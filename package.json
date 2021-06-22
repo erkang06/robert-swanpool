@@ -1,0 +1,15 @@
+{
+  "name": "Robert-Swanpool",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "sentencer": "^0.2.1",
+    "urban-dictionary": "^3.0.1"
+  }
+}
