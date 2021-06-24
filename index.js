@@ -60,6 +60,10 @@ client.on("message", msg => {
   const MsgContent = msg.content.toLowerCase()
   let AllArgs = ""
   switch (true) {
+    case msg.content.endsWith("evening prayer.") && msg.author.id == "204255221017214977" && msg.channel.id == "828274056440446976":
+      msg.channel.send(":pray:");
+      break;
+    
     case MsgContent.startsWith("mr, help"):
       HelpEmbed.setColor(Math.floor(Math.random() * 16777215))
       msg.channel.send(HelpEmbed);
