@@ -5,7 +5,7 @@ var Sentencer = require('sentencer')
 const client = new Discord.Client()
 
 client.on("ready", () => {
-  client.channels.get("709674340504829974").send("Hey guys, I'm back")
+  client.channels.cache.get("709674340504829974").send("Hey guys, I'm back")
   console.log(`Logged in as ${client.user.tag}!`)
 })
 
