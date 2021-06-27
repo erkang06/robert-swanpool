@@ -5,7 +5,6 @@ var Sentencer = require('sentencer')
 const client = new Discord.Client()
 
 client.on("ready", () => {
-  client.channels.cache.get("709674340504829974").send("Hey guys, I'm back")
   console.log(`Logged in as ${client.user.tag}!`)
 })
 
@@ -152,6 +151,18 @@ client.on("message", msg => {
       InsultEmbed.setDescription(AllArgs + " is " + Sentencer.make("{{ an_adjective }}") + " " + Sentencer.make("{{ noun }}"))
       InsultEmbed.setColor(Math.floor(Math.random() * 16777215))
       msg.channel.send(InsultEmbed)
+      break;
+    
+    case MsgContent.startsWith("mr, kpop"):
+      var VC = msg.member.voice.channel;
+      if (!VC)
+        return msg.reply("MESSAGE IF NOT IN A VOICE CHANNEL")
+      VC.join()
+        .then(connection => {
+          const dispatcher = connection.play('DDD - EXID.m4a');
+          dispatcher.on("end", end => {VC.leave()});
+        })
+        .catch(console.error);
       break;
     
     case MsgContent.startsWith("animals"):
