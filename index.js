@@ -156,7 +156,7 @@ client.on("message", msg => {
     case MsgContent.startsWith("mr, kpop"):
       var VC = msg.member.voice.channel;
       if (!VC)
-        return msg.reply("MESSAGE IF NOT IN A VOICE CHANNEL")
+        return msg.reply("you aren't in a voice channel. Please join one and try again")
       VC.join()
         .then(connection => {
           const dispatcher = connection.play('DDD - EXID.m4a');
