@@ -171,7 +171,7 @@ client.on("message", msg => {
         return msg.reply("You aren't in a voice channel. Please join one and try again")
       VC.join()
         .then(connection => {
-          msg.channel.send("Now playing: " + AllArgs.slice(0, -4)
+          msg.channel.send("Playing: " + AllArgs.slice(0, -4))
           const dispatcher = connection.play("Kpop/" + AllArgs);
           dispatcher.on("end", end => {VC.leave()});
         })
