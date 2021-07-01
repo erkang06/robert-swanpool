@@ -1,6 +1,7 @@
 var ud = require('urban-dictionary')
 var Discord = require("discord.js")
 var Sentencer = require('sentencer')
+var fs = require('fs')
 
 const client = new Discord.Client()
 
