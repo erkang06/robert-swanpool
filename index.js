@@ -185,6 +185,7 @@ client.on("message", msg => {
       else {
         message.guild.me.voiceChannel.leave()
         message.reply("I have successfully left the voice channel")
+      }
       break;
     
     case MsgContent.startsWith("mr, status"):
