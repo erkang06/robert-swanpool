@@ -168,7 +168,7 @@ client.on("message", msg => {
       AllArgs = SUPERJSON.Kpop[Math.floor(Math.random() * SUPERJSON.Kpop.length)]
       var VC = msg.member.voice.channel;
       if (!VC)
-        return msg.reply("You aren't in a voice channel. Please join one and try again")
+        return msg.channel.send("You aren't in a voice channel. Please join one and try again")
       VC.join()
         .then(connection => {
           msg.channel.send("Playing: " + AllArgs.slice(0, -4))
@@ -179,7 +179,12 @@ client.on("message", msg => {
       break;
       
     case MsgContent.startsWith("mr, leave"):
-      message.guild.me.voice.channel.leave();
+      if (message.guild.me.voiceChannel !== undefined) {
+        message.guild.me.voiceChannel.leave();
+        message.reply("I have successfully left the voice channel!");
+      }
+      else {
+        message.reply("I'm not connected to a voice channel!");
       break;
     
     case MsgContent.startsWith("mr, status"):
