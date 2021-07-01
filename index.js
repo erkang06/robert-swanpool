@@ -183,7 +183,7 @@ client.on("message", msg => {
         msg.channel.send("I'm not connected to a voice channel")
       }
       else {
-        msg.guild.me.voiceChannel.leave()
+        msg.guild.me.voice.channel.leave()
         msg.channel.send("I have successfully left the voice channel")
       }
       break;
