@@ -25,7 +25,7 @@ const HelpEmbed = new Discord.MessageEmbed()
   .addFields(
     {name: "Rates", value: "qwordrate\nfurryrate\ngayrate\ndankrate\ngamerrate\nthotrate", inline: true},
     {name: "Talking to Robert", value: "hello/hi\nwill you marry me?\nsend a selfie\nsmell me", inline: true},
-    {name: "Others", value: "insult\npp\nstatus (p/l/w/c)"},
+    {name: "Others", value: "insult\npp\nstatus (p/l/w)"},
   )
   .setFooter("Type 'mr,' followed by the cmd you want to use");
 
@@ -38,7 +38,7 @@ function Rate(MsgContent, LenMsg, Author, WhichRate){
     AllArgs = Author
   }
   else {
-    AllArgs = MsgContent.slice(LenMsg + 1, -1) + MsgContent.slice(-1)
+    AllArgs = MsgContent.slice(LenMsg + 1)
   }
   Rating =  AllArgs + " is " + PCRate.toString() + "% " + WhichRate + "!"
   let Howratey = ""
@@ -132,7 +132,7 @@ client.on("message", msg => {
         AllArgs = `${msg.author}`
       }
       else {
-        AllArgs = msg.content.slice(7, -1) + msg.content.slice(-1)
+        AllArgs = msg.content.slice(7)
       }
       var PenisSize = '='.repeat(Math.random() * 25)
       PenisEmbed.setDescription(AllArgs + "'s penis:\n8" + PenisSize + "D")
@@ -156,7 +156,7 @@ client.on("message", msg => {
         AllArgs = `${msg.author}`
       }
       else {
-        AllArgs = msg.content.slice(11, -1) + msg.content.slice(-1)
+        AllArgs = msg.content.slice(11)
       }
       InsultEmbed.setDescription(AllArgs + " is " + Sentencer.make("{{ an_adjective }}") + " " + Sentencer.make("{{ noun }}"))
       InsultEmbed.setColor(Math.floor(Math.random() * 16777215))
@@ -175,8 +175,40 @@ client.on("message", msg => {
         .catch(console.error);
       break;
     
-    case MsgContent.startsWith("animals"):
-      msg.reply("longering")
+    case MsgContent.startsWith("mr, status"):
+      var Status = ""
+      switch (MsgContent.slice(11, 12)) {
+        case "p":
+          Status = "PLAYING"
+          break;
+        case "l":
+          Status = "LISTENING"
+          break;
+        case "w":
+          Status = "WATCHING"
+          break;
+      }
+      if (Status) {
+        AllArgs = msg.content.slice(13, -1) + msg.content.slice(-1)
+        client.user.setPresence({activity: {type: Status, name: AllArgs}})
+        msg.channel.send("My " + Status.toLowerCase() + " status has changed to '" + AllArgs + "'")
+      }
+      else {
+        msg.channel.send("Type 'mr,' followed by either 'p', 'l' or 'w' then your status of choice")
+      }
+      break;
+      
+    case MsgContent.startsWith("mr, send a selfie"):
+      msg.channel.send("https://cdn.discordapp.com/avatars/849711698737758298/9fb82f17f708ec69bc2a39c375d0ad2e.png")
+      break;
+      
+    case MsgContent.startsWith("mr, will you marry me?"):
+      if (Math.floor(Math.random() * 5) == 0) {
+        msg.channel.send("Of course!")
+      }
+      else {
+        msg.channel.send("Why would I? I have a wife and kids")
+      }
       break;
   
   }
