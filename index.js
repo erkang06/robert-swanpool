@@ -171,6 +171,7 @@ client.on("message", msg => {
         return msg.reply("You aren't in a voice channel. Please join one and try again")
       VC.join()
         .then(connection => {
+          msg.channel.send("Now playing: " + AllArgs.slice(0, -4)
           const dispatcher = connection.play("Kpop/" + AllArgs);
           dispatcher.on("end", end => {VC.leave()});
         })
@@ -195,7 +196,7 @@ client.on("message", msg => {
           break;
       }
       if (Status) {
-        AllArgs = msg.content.slice(13, -1) + msg.content.slice(-1)
+        AllArgs = msg.content.slice(13)
         client.user.setPresence({activity: {type: Status, name: AllArgs}})
         msg.channel.send("My " + Status.toLowerCase() + " status has changed to '" + AllArgs + "'")
       }
