@@ -164,12 +164,13 @@ client.on("message", msg => {
       break;
     
     case MsgContent.startsWith("mr, kpop"):
+      AllArgs = SUPERJSON.Kpop[Math.floor(Math.random() * SUPERJSON.Kpop.length)]
       var VC = msg.member.voice.channel;
       if (!VC)
-        return msg.reply("you aren't in a voice channel. Please join one and try again")
+        return msg.reply("You aren't in a voice channel. Please join one and try again")
       VC.join()
         .then(connection => {
-          const dispatcher = connection.play('DDD - EXID.m4a');
+          const dispatcher = connection.play("Kpop/" + AllArgs);
           dispatcher.on("end", end => {VC.leave()});
         })
         .catch(console.error);
