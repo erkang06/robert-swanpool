@@ -179,12 +179,12 @@ client.on("message", msg => {
       break;
       
     case MsgContent.startsWith("mr, leave"):
-      if (message.guild.me.voiceChannel !== undefined) {
-        message.guild.me.voiceChannel.leave();
-        message.reply("I have successfully left the voice channel!");
+      if (message.guild.me.voiceChannel) {
+        message.reply("I'm not connected to a voice channel")
       }
       else {
-        message.reply("I'm not connected to a voice channel!");
+        message.guild.me.voiceChannel.leave()
+        message.reply("I have successfully left the voice channel")
       break;
     
     case MsgContent.startsWith("mr, status"):
