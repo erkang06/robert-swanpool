@@ -1,11 +1,17 @@
-var ud = require('urban-dictionary')
 var Discord = require("discord.js")
 var Sentencer = require('sentencer')
 var fs = require('fs')
 var ffmpeg = require('ffmpeg')
 var { OpusEncoder } = require('@discordjs/opus');
 
-const client = new Discord.Client()
+const client = new Discord.Client({
+  presence: {
+    activity: {
+      type: 'PLAYING',
+      name: 'bingo',
+    },
+  },
+});
 
 client.on("ready", () => {
   client.channels.cache.get("709674340504829974").send("Hey guys, I'm back")
@@ -19,7 +25,7 @@ const HelpEmbed = new Discord.MessageEmbed()
   .addFields(
     {name: "Rates", value: "qwordrate\nfurryrate\ngayrate\ndankrate\ngamerrate\nthotrate", inline: true},
     {name: "Talking to Robert", value: "hello/hi\nwill you marry me?\nsend a selfie\nsmell me", inline: true},
-    {name: "Others", value: "fetish\ninsult\npp\nstatus (p/w/c)"},
+    {name: "Others", value: "insult\npp\nstatus (p/l/w/c)"},
   )
   .setFooter("Type 'mr,' followed by the cmd you want to use");
 
