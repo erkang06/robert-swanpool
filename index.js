@@ -25,6 +25,7 @@ const HelpEmbed = new Discord.MessageEmbed()
   .addFields(
     {name: "Rates", value: "qwordrate\nfurryrate\ngayrate\ndankrate\ngamerrate\nthotrate", inline: true},
     {name: "Talking to Robert", value: "hello/hi\nwill you marry me?\nsend a selfie\nsmell me", inline: true},
+    {name: "Voice Channel", value: "kpop\nleave", inline: true},
     {name: "Others", value: "insult\npp\nstatus (p/l/w)"},
   )
   .setFooter("Type 'mr,' followed by the cmd you want to use");
@@ -174,6 +175,10 @@ client.on("message", msg => {
           dispatcher.on("end", end => {VC.leave()});
         })
         .catch(console.error);
+      break;
+      
+    case MsgContent.startsWith("mr, leave"):
+      message.guild.me.voice.channel.leave();
       break;
     
     case MsgContent.startsWith("mr, status"):
