@@ -240,6 +240,7 @@ client.on("message", msg => {
         default:
           msg.guild.me.voice.channel.leave()
           msg.channel.send("I have successfully left the voice channel")
+      }
       break;
     
     case MsgContent.startsWith("mr, status"):
