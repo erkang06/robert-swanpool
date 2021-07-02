@@ -72,9 +72,12 @@ const InsultEmbed = new Discord.MessageEmbed()
   .setTitle("Insult:")
   .setFooter("Feel hurt?")
 
+var KpopSongs = SUPERJSON.Kpop.join("\n")
+KpopSongs.replace(".m4a", "")
+console.log(KpopSongs)
 const KpopEmbed = new Discord.MessageEmbed()
   .setTitle("All Kpop songs")
-  .setDescription(SUPERJSON.Kpop.join("\n").replace(".m4a", ""))
+  .setDescription(KpopSongs)
   .setFooter("Type 'mr, kpop' in a voice channel to use it");
 
 client.on("message", msg => {
