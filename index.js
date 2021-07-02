@@ -230,7 +230,7 @@ client.on("message", msg => {
         case msg.guild.me.voice.channel == undefined:
           msg.channel.send("I'm not connected to a voice channel")
           break;
-        case msg.member.voice.channel.id == undefined:
+        case msg.member.voice.channel == undefined:
           msg.channel.send("You're not connected to a voice channel")
           break;
         case msg.member.voice.channel.id != msg.guild.me.voice.channel.id:
