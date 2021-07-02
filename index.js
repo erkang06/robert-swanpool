@@ -73,7 +73,7 @@ const InsultEmbed = new Discord.MessageEmbed()
   .setFooter("Feel hurt?")
 
 var KpopSongs = SUPERJSON.Kpop.join("\n")
-KpopSongs = KpopSongs.replace(".m4a", "")
+KpopSongs = KpopSongs.split(".m4a").join("")
 console.log(KpopSongs)
 const KpopEmbed = new Discord.MessageEmbed()
   .setTitle("All Kpop songs")
