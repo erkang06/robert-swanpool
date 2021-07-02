@@ -196,7 +196,6 @@ client.on("message", msg => {
       break;
       
     case MsgContent.startsWith("mr, leave"):
-      console.log(msg.member.voice.channel)
       if (msg.member.voice.channel == undefined) {
         msg.channel.send("I'm not connected to a voice channel")
       }
