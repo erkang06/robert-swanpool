@@ -1,8 +1,9 @@
-var Discord = require("discord.js")
-var Sentencer = require('sentencer')
-var fs = require('fs')
-var ffmpeg = require('ffmpeg')
-var { OpusEncoder } = require('@discordjs/opus');
+const Discord = require("discord.js")
+const Sentencer = require('sentencer')
+const fs = require('fs')
+const ffmpeg = require('ffmpeg')
+const { OpusEncoder } = require('@discordjs/opus')
+const SUPERJSON = require("./SUPERJSON.json");
 
 const client = new Discord.Client({
   presence: {
@@ -18,14 +19,12 @@ client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`)
 })
 
-const SUPERJSON = require("./SUPERJSON.json")
-
 const HelpEmbed = new Discord.MessageEmbed()
   .setTitle("Every command there is")
   .addFields(
     {name: "Rates", value: "qwordrate\nfurryrate\ngayrate\ndankrate\ngamerrate\nthotrate", inline: true},
     {name: "Talking to Robert", value: "hello/hi\nwill you marry me?\nsend a selfie\nsmell me", inline: true},
-    {name: "Voice Channel", value: "kpop\nleave", inline: true},
+    {name: "Voice Channel", value: "kpop\nkpopsongs\nleave", inline: true},
     {name: "Others", value: "insult\npp\nstatus (p/l/w)"},
   )
   .setFooter("Type 'mr,' followed by the cmd you want to use");
@@ -72,6 +71,11 @@ const SmellEmbed = new Discord.MessageEmbed()
 const InsultEmbed = new Discord.MessageEmbed()
   .setTitle("Insult:")
   .setFooter("Feel hurt?")
+
+const KpopEmbed = new Discord.MessageEmbed()
+  .setTitle("All Kpop songs")
+  .addDescription(SUPERJSON.Kpop.join("\n"))
+  .setFooter("Type 'mr, kpop' in a voice channel to use it");
 
 client.on("message", msg => {
   const MsgContent = msg.content.toLowerCase()
@@ -162,6 +166,11 @@ client.on("message", msg => {
       InsultEmbed.setDescription(AllArgs + " is " + Sentencer.make("{{ an_adjective }}") + " " + Sentencer.make("{{ noun }}"))
       InsultEmbed.setColor(Math.floor(Math.random() * 16777215))
       msg.channel.send(InsultEmbed)
+      break;
+    
+    case MsgContent.startsWith("mr, kpopsongs"):
+      KpopEmbed.setColor(Math.floor(Math.random() * 16777215))
+      msg.channel.send(KpopEmbed)
       break;
     
     case MsgContent.startsWith("mr, kpop"):
