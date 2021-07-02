@@ -24,7 +24,7 @@ const HelpEmbed = new Discord.MessageEmbed()
   .addFields(
     {name: "Rates", value: "qwordrate\nfurryrate\ngayrate\ndankrate\ngamerrate\nthotrate", inline: true},
     {name: "Talking to Robert", value: "hello/hi\nwill you marry me?\nsend a selfie\nsmell me", inline: true},
-    {name: "Voice Channel", value: "kpop\nkpopsongs\nleave", inline: true},
+    {name: "Voice Channel", value: "kpop\nkpopsongs\nburp\nfart\nstruggle\nleave", inline: true},
     {name: "Others", value: "insult\npp\nstatus (p/l/w)"},
   )
   .setFooter("Type 'mr,' followed by the cmd you want to use");
@@ -191,14 +191,56 @@ client.on("message", msg => {
         .catch(console.error);
       break;
       
+    case MsgContent.startsWith("mr, burp"):
+      var VC = msg.member.voice.channel;
+      if (!VC) {
+        return msg.channel.send("You aren't in a voice channel. Please join one and try again")
+      }
+      VC.join()
+        .then(connection => {
+          const dispatcher = connection.play("noises/burp.wav");
+          dispatcher.on("end", end => {VC.leave()});
+        })
+        .catch(console.error);
+      break;
+      
+    case MsgContent.startsWith("mr, fart"):
+      var VC = msg.member.voice.channel;
+      if (!VC) {
+        return msg.channel.send("You aren't in a voice channel. Please join one and try again")
+      }
+      VC.join()
+        .then(connection => {
+          const dispatcher = connection.play("noises/fart.wav");
+          dispatcher.on("end", end => {VC.leave()});
+        })
+        .catch(console.error);
+      break;
+      
+    case MsgContent.startsWith("mr, struggle"):
+      var VC = msg.member.voice.channel;
+      if (!VC) {
+        return msg.channel.send("You aren't in a voice channel. Please join one and try again")
+      }
+      VC.join()
+        .then(connection => {
+          const dispatcher = connection.play("noises/struggle.wav");
+          dispatcher.on("end", end => {VC.leave()});
+        })
+        .catch(console.error);
+      break;
+      
     case MsgContent.startsWith("mr, leave"):
-      if (msg.member.voice.channel == undefined) {
-        msg.channel.send("I'm not connected to a voice channel")
-      }
-      else {
-        msg.guild.me.voice.channel.leave()
-        msg.channel.send("I have successfully left the voice channel")
-      }
+      switch(undefined) {
+        case msg.guild.me.voice.channel:
+          msg.channel.send("I'm not connected to a voice channel")
+          break;
+        case msg.member.voice.channel:
+          msg.channel.send("You're not connected to a voice channel")
+          break;
+        default:
+          msg.guild.me.voice.channel.leave()
+          msg.channel.send("I have successfully left the voice channel")
       break;
     
     case MsgContent.startsWith("mr, status"):
