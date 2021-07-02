@@ -184,10 +184,9 @@ client.on("message", msg => {
       VC.join()
         .then(connection => {
           msg.channel.send("Playing: " + AllArgs.slice(0, -4))
-          const dispatcher = connection.play("Kpop/" + AllArgs);
+          const dispatcher = connection.play("Kpop/" + AllArgs)
           dispatcher.on("end", end => {VC.leave()});
         })
-        .catch(console.error);
       break;
       
     case MsgContent.startsWith("mr, burp"):
@@ -197,10 +196,9 @@ client.on("message", msg => {
       }
       VC.join()
         .then(connection => {
-          const dispatcher = connection.play("noises/burp.wav");
+          const dispatcher = connection.play("noises/burp.wav")
           dispatcher.on("end", end => {VC.leave()});
         })
-        .catch(console.error);
       break;
       
     case MsgContent.startsWith("mr, fart"):
@@ -210,10 +208,9 @@ client.on("message", msg => {
       }
       VC.join()
         .then(connection => {
-          const dispatcher = connection.play("noises/fart.wav");
+          const dispatcher = connection.play("noises/fart.wav")
           dispatcher.on("end", end => {VC.leave()});
         })
-        .catch(console.error);
       break;
       
     case MsgContent.startsWith("mr, struggle"):
@@ -223,10 +220,9 @@ client.on("message", msg => {
       }
       VC.join()
         .then(connection => {
-          const dispatcher = connection.play("noises/struggle.wav");
+          const dispatcher = connection.play("noises/struggle.wav")
           dispatcher.on("end", end => {VC.leave()});
         })
-        .catch(console.error);
       break;
       
     case MsgContent.startsWith("mr, leave"):
