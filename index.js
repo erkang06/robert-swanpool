@@ -226,12 +226,15 @@ client.on("message", msg => {
       break;
       
     case MsgContent.startsWith("mr, leave"):
-      switch(undefined) {
-        case msg.guild.me.voice.channel:
+      switch(true) {
+        case msg.guild.me.voice.channel == undefined:
           msg.channel.send("I'm not connected to a voice channel")
           break;
-        case msg.member.voice.channel:
+        case msg.member.voice.channel.id == undefined:
           msg.channel.send("You're not connected to a voice channel")
+          break;
+        case msg.member.voice.channel.id != msg.guild.me.voice.channel.id:
+          msg.channel.send("You're not connected to the voice channel Robert is on")
           break;
         default:
           msg.guild.me.voice.channel.leave()
