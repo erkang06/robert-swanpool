@@ -32,7 +32,7 @@ const HelpEmbed = new Discord.MessageEmbed()
 const RateEmbed = new Discord.MessageEmbed()
 var RatePic = ""
 var Title = ""
-function Rate(MsgContent, LenMsg, Author, WhichRate){
+function Rate(MsgContent, LenMsg, Author, WhichRate) {
   let PCRate = Math.floor(Math.random() * 101)
   if (MsgContent.length == LenMsg) {
     AllArgs = Author
@@ -71,6 +71,13 @@ const SmellEmbed = new Discord.MessageEmbed()
 const InsultEmbed = new Discord.MessageEmbed()
   .setTitle("Insult:")
   .setFooter("Feel hurt?")
+
+function InVC(VC) {
+  if (!VC) {
+        return msg.channel.send("You aren't in a voice channel. Please join one and try again")
+      }
+      VC.join()
+}
 
 var KpopSongs = SUPERJSON.Kpop.join("\n")
 KpopSongs = KpopSongs.split(".m4a").join("")
@@ -175,14 +182,12 @@ client.on("message", msg => {
       KpopEmbed.setColor(Math.floor(Math.random() * 16777215))
       msg.channel.send(KpopEmbed)
       break;
-    
+      
     case MsgContent.startsWith("mr, kpop"):
       AllArgs = SUPERJSON.Kpop[Math.floor(Math.random() * SUPERJSON.Kpop.length)]
       var VC = msg.member.voice.channel;
-      if (!VC)
-        return msg.channel.send("You aren't in a voice channel. Please join one and try again")
-      VC.join()
-        .then(connection => {
+      InVC(VC)
+      VC.then(connection => {
           msg.channel.send("Playing: " + AllArgs.slice(0, -4))
           const dispatcher = connection.play("Kpop/" + AllArgs);
           dispatcher.on("end", end => {VC.leave()});
@@ -191,8 +196,8 @@ client.on("message", msg => {
       break;
       
     case MsgContent.startsWith("mr, leave"):
-      console.log(msg.guild.me.voice.channel)
-      if (msg.guild.me.voice.channel == undefined) {
+      console.log(msg.member.voice.channel)
+      if (msg.member.voice.channel == undefined) {
         msg.channel.send("I'm not connected to a voice channel")
       }
       else {
