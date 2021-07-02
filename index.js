@@ -74,14 +74,14 @@ const InsultEmbed = new Discord.MessageEmbed()
 
 const KpopEmbed = new Discord.MessageEmbed()
   .setTitle("All Kpop songs")
-  .setDescription(SUPERJSON.Kpop.join("\n"))
+  .setDescription(SUPERJSON.Kpop.join("\n").replace(".m4a", ""))
   .setFooter("Type 'mr, kpop' in a voice channel to use it");
 
 client.on("message", msg => {
   const MsgContent = msg.content.toLowerCase()
   let AllArgs = ""
   switch (true) {
-    case msg.content.endsWith("evening prayer.") && msg.author.id == "204255221017214977" && msg.channel.id == "828274056440446976":
+    case msg.content.endsWith("prayer.") && msg.author.id == "204255221017214977" && msg.channel.id == "828274056440446976":
       msg.channel.send(":pray:")
       break;
     
