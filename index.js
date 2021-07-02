@@ -72,13 +72,6 @@ const InsultEmbed = new Discord.MessageEmbed()
   .setTitle("Insult:")
   .setFooter("Feel hurt?")
 
-function InVC(VC) {
-  if (!VC) {
-        return msg.channel.send("You aren't in a voice channel. Please join one and try again")
-      }
-      VC.join()
-}
-
 var KpopSongs = SUPERJSON.Kpop.join("\n")
 KpopSongs = KpopSongs.split(".m4a").join("")
 console.log(KpopSongs)
@@ -186,8 +179,11 @@ client.on("message", msg => {
     case MsgContent.startsWith("mr, kpop"):
       AllArgs = SUPERJSON.Kpop[Math.floor(Math.random() * SUPERJSON.Kpop.length)]
       var VC = msg.member.voice.channel;
-      InVC(VC)
-      VC.then(connection => {
+      if (!VC) {
+        return msg.channel.send("You aren't in a voice channel. Please join one and try again")
+      }
+      VC.join()
+        .then(connection => {
           msg.channel.send("Playing: " + AllArgs.slice(0, -4))
           const dispatcher = connection.play("Kpop/" + AllArgs);
           dispatcher.on("end", end => {VC.leave()});
