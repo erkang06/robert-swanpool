@@ -179,7 +179,8 @@ client.on("message", msg => {
       break;
       
     case MsgContent.startsWith("mr, leave"):
-      if (msg.guild.me.voiceChannel == undefined) {
+      console.log(msg.guild.me.voice.channel)
+      if (msg.guild.me.voice.channel == undefined) {
         msg.channel.send("I'm not connected to a voice channel")
       }
       else {
