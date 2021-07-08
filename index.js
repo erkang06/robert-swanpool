@@ -142,7 +142,7 @@ client.on("message", msg => {
         AllArgs = msg.content.slice(7)
       }
       var PenisSize = ""
-      msg.channel.send(AllArgs)
+      console.log(AllArgs)
       if (AllArgs == "@704724304130080770") {
         PenisSize = ""
       }
