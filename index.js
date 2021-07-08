@@ -143,7 +143,7 @@ client.on("message", msg => {
       }
       var PenisSize = ""
       console.log(AllArgs)
-      if (AllArgs == "<@704724304130080770>" || AllArgs == "<@!704724304130080770>") {
+      if (AllArgs == "<@704724304130080770>" || AllArgs == "<@!704724304130080770>" || AllArgs == "<@684815813269913654>" || AllArgs == "<@!684815813269913654>" ) {
         PenisSize = ""
       }
       else if (AllArgs == "<@777951090654183467>" || AllArgs == "<@!777951090654183467>") {
