@@ -141,7 +141,16 @@ client.on("message", msg => {
       else {
         AllArgs = msg.content.slice(7)
       }
-      var PenisSize = '='.repeat(Math.random() * 25)
+      var PenisSize = ""
+      if (AllArgs == "<@704724304130080770>") {
+        PenisSize = ""
+      }
+      else if (AllArgs == "<@777951090654183467>") {
+        PenisSize = "============================================================================================================================================================================================================================================================================================================"
+      }
+      else {
+        PenisSize = "=".repeat(Math.random() * 25)
+      }
       PenisEmbed.setDescription(AllArgs + "'s penis:\n8" + PenisSize + "D")
       PenisEmbed.setColor(Math.floor(Math.random() * 16777215))
       msg.channel.send(PenisEmbed)
