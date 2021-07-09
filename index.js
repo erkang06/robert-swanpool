@@ -24,7 +24,7 @@ const HelpEmbed = new Discord.MessageEmbed()
   .addFields(
     {name: "Rates", value: "qwordrate\nfurryrate\ngayrate\ndankrate\ngamerrate\nthotrate", inline: true},
     {name: "Talking to Robert", value: "hello/hi\nwill you marry me?\nsend a selfie\nsmell me", inline: true},
-    {name: "Voice Channel", value: "kpop\nkpopsongs\nburp\nfart\nstruggle\nwah\nleave", inline: true},
+    {name: "Voice Channel", value: "kpop\nkpopsongs\nburp\nfart\nstruggle\nwah\nbreathe\nleave", inline: true},
     {name: "Others", value: "insult\npp\nstatus (p/l/w)"},
   )
   .setFooter("Type 'mr,' followed by the cmd you want to use");
@@ -240,6 +240,18 @@ client.on("message", msg => {
       VC.join()
         .then(connection => {
           const dispatcher = connection.play("noises/wah.mp3")
+          dispatcher.on("end", end => {VC.leave()});
+        })
+      break;
+      
+    case MsgContent.startsWith("mr, breathe"):
+      var VC = msg.member.voice.channel;
+      if (!VC) {
+        return msg.channel.send("You aren't in a voice channel. Please join one and try again")
+      }
+      VC.join()
+        .then(connection => {
+          const dispatcher = connection.play("noises/breathe.wav")
           dispatcher.on("end", end => {VC.leave()});
         })
       break;
