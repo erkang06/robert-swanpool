@@ -24,9 +24,10 @@ const HelpEmbed = new Discord.MessageEmbed()
   .addFields(
     {name: "Rates", value: "qwordrate\nfurryrate\ngayrate\ndankrate\ngamerrate\nthotrate", inline: true},
     {name: "Talking to Robert", value: "hello/hi\nwill you marry me?\nsend a selfie\nsmell me", inline: true},
-    {name: "Voice Channel", value: "kpop\nkpopsongs\nburp\nfart\nwetfart\nstruggle\nwah\nbreathe\nscream\nspeakleave", inline: true},
+    {name: "Voice Channel", value: "kpop\nkpopsongs\nburp\nfart\nwetfart\nstruggle\nwah\nbreathe\nscream\nspeak\nleave", inline: true},
     {name: "Others", value: "insult\npp\nstatus (p/l/w)"},
   )
+  .setImage("https://cdn.discordapp.com/avatars/849711698737758298/9fb82f17f708ec69bc2a39c375d0ad2e.png")
   .setFooter("Type 'mr,' followed by the cmd you want to use");
 
 const RateEmbed = new Discord.MessageEmbed()
