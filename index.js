@@ -24,7 +24,7 @@ const HelpEmbed = new Discord.MessageEmbed()
   .addFields(
     {name: "Rates", value: "qwordrate\nfurryrate\ngayrate\ndankrate\ngamerrate\nthotrate", inline: true},
     {name: "Talking to Robert", value: "hello/hi\nwill you marry me?\nsend a selfie\nsmell me", inline: true},
-    {name: "Voice Channel", value: "kpop\nkpopsongs\nburp\nfart\nstruggle\nwah\nbreathe\nleave", inline: true},
+    {name: "Voice Channel", value: "kpop\nkpopsongs\nburp\nfart\nstruggle\nwah\nbreathe\nscream\nleave", inline: true},
     {name: "Others", value: "insult\npp\nstatus (p/l/w)"},
   )
   .setFooter("Type 'mr,' followed by the cmd you want to use");
