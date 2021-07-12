@@ -22,10 +22,10 @@ client.on("ready", () => {
 const HelpEmbed = new Discord.MessageEmbed()
   .setTitle("Every command there is")
   .addFields(
-    {name: "Rates", value: "qwordrate\nfurryrate\ngayrate\ndankrate\ngamerrate\nthotrate", inline: true},
-    {name: "Talking to Robert", value: "hello/hi\nwill you marry me?\nsend a selfie\nsmell me\b", inline: true},
-    {name: "Voice Channel", value: "kpop\nkpopsongs\nburp\nfart\nwetfart\nstruggle\nwah\nbreathe\nscream\nspeak\nleave", inline: true},
-    {name: "Others", value: "insult\npp\nstatus (p/l/w)", inline: true}
+    {name: "Rates", value: "qwordrate\nfurryrate\ngayrate\ndankrate\ngamerrate\nthotrate"},
+    {name: "Talking to Robert", value: "hello/hi\nwill you marry me?\nsend a selfie\nsmell me"},
+    {name: "Voice Channel", value: "kpop\nkpopsongs\nburp\nfart\nwetfart\nstruggle\nwah\nbreathe\nscream\nspeak\nleave"},
+    {name: "Others", value: "insult\npp\nstatus (p/l/w)"}
   )
   .setThumbnail("https://cdn.discordapp.com/avatars/849711698737758298/9fb82f17f708ec69bc2a39c375d0ad2e.png")
   .setFooter("Type 'mr,' followed by the cmd you want to use");
@@ -90,7 +90,8 @@ client.on("message", msg => {
     
     case MsgContent.startsWith("mr, help"):
       HelpEmbed.setColor(Math.floor(Math.random() * 16777215))
-      msg.channel.send(HelpEmbed)
+      msg.author.send(HelpEmbed)
+      msg.react("👍")
       break;
     
     case MsgContent.startsWith("mr, qwordrate"):
