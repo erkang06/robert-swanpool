@@ -294,6 +294,17 @@ client.on("message", msg => {
         })
       break;
       
+    case MsgContent.startsWith("mr, vctest"):
+      var VC = msg.member.voice.channel;
+      if (!VC) {
+        return msg.channel.send("You aren't in a voice channel. Please join one and try again")
+      }
+      VC.join()
+        .then(connection => {
+          const dispatcher = connection.play("noises/struggle.wav")
+        .then(VC.leave())
+      break;
+      
     case MsgContent.startsWith("mr, leave"):
       switch(true) {
         case msg.guild.me.voice.channel == undefined:
