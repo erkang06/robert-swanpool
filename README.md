@@ -1,6 +1,6 @@
 Robert Swanpool
 ---------------
-![Selfie](robert.png)
+![Selfie](robert.png)  
 prefix is 'mr, '  
 help cmd is 'mr, help'  
 
