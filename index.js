@@ -23,8 +23,7 @@ const HelpEmbed = new Discord.MessageEmbed()
   .setTitle("Every command there is")
   .addFields(
     {name: "Rates", value: "qwordrate\nfurryrate\ngayrate\ndankrate\ngamerrate\nthotrate", inline: true},
-    {name: "Talking to Robert", value: "hello/hi\nwill you marry me?\nsend a selfie\nsmell me", inline: true},
-    {name: '\b', value: '\b', inline: true},
+    {name: "Talking to Robert", value: "hello/hi\nwill you marry me?\nsend a selfie\nsmell me\b", inline: true},
     {name: "Voice Channel", value: "kpop\nkpopsongs\nburp\nfart\nwetfart\nstruggle\nwah\nbreathe\nscream\nspeak\nleave", inline: true},
     {name: "Others", value: "insult\npp\nstatus (p/l/w)", inline: true}
   )
