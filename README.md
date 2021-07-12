@@ -12,4 +12,4 @@ stuff he can do:
   * make sounds
   * and **much much** more!
 
-Invite him to your server [here](https://discord.com/api/oauth2/authorize?client_id=849711698737758298&permissions=2486696688&scope=bot)
+Invite him [here](https://discord.com/api/oauth2/authorize?client_id=849711698737758298&permissions=2486696688&scope=bot)
