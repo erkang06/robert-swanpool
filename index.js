@@ -25,7 +25,7 @@ const HelpEmbed = new Discord.MessageEmbed()
     {name: "Rates", value: "qwordrate\nfurryrate\ngayrate\ndankrate\ngamerrate\nthotrate"},
     {name: "Talking to Robert", value: "hello/hi\nwill you marry me?\nsend a selfie\nsmell me"},
     {name: "Voice Channel", value: "kpop\nkpopsongs\nburp\nfart\nwetfart\nstruggle\nwah\nbreathe\nscream\nspeak\nleave"},
-    {name: "Others", value: "insult\npp\nstatus (p/l/w)"}
+    {name: "Others", value: "insult\npp/penis\nchode\nstatus (p/l/w)"}
   )
   .setThumbnail("https://cdn.discordapp.com/avatars/849711698737758298/9fb82f17f708ec69bc2a39c375d0ad2e.png")
   .setFooter("Type 'mr,' followed by the cmd you want to use");
@@ -64,6 +64,9 @@ function Rate(MsgContent, LenMsg, Author, WhichRate) {
 
 const PenisEmbed = new Discord.MessageEmbed()
   .setTitle("Penis size:");
+
+const ChodeEmbed = new Discord.MessageEmbed()
+  .setTitle("Chode size:");
 
 const SmellEmbed = new Discord.MessageEmbed()
   .setTitle("What do you smell like?")
@@ -136,7 +139,7 @@ client.on("message", msg => {
       msg.channel.send(RateEmbed)
       break;
 
-    case MsgContent.startsWith("mr, pp"):
+    case MsgContent.startsWith("mr, pp") || MsgContent.startsWith("mr, penis"):
       if (MsgContent.length == 6) {
         AllArgs = `${msg.author}`
       }
@@ -154,6 +157,19 @@ client.on("message", msg => {
       PenisEmbed.setDescription(AllArgs + "'s penis:\n8" + PenisSize + "D")
       PenisEmbed.setColor(Math.floor(Math.random() * 16777215))
       msg.channel.send(PenisEmbed)
+      break;
+      
+    case MsgContent.startsWith("mr, chode"):
+      if (MsgContent.length == 9) {
+        AllArgs = `${msg.author}`
+      }
+      else {
+        AllArgs = msg.content.slice(10)
+      }
+      var ChodeSize = '━'.repeat(Math.random() * 15)
+      ChodeEmbed.setDescription(AllArgs + "'s chode:\nO" + ChodeSize + "╮\nO" + ChodeSize + "╯")
+      ChodeEmbed.setColor(Math.floor(Math.random() * 16777215))
+      msg.channel.send(ChodeEmbed)
       break;
     
     case MsgContent.startsWith("mr, hello") || MsgContent.startsWith("mr, hi"):
