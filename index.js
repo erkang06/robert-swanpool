@@ -194,7 +194,7 @@ client.on("message", msg => {
         .then(connection => {
           msg.channel.send("Playing: " + AllArgs.slice(0, -4))
           const dispatcher = connection.play("Kpop/" + AllArgs)
-          dispatcher.on("end", end => {VC.leave()});
+          dispatcher.on("finish", () => {VC.leave()});
         })
       break;
       
@@ -206,7 +206,7 @@ client.on("message", msg => {
       VC.join()
         .then(connection => {
           const dispatcher = connection.play("noises/burp.wav")
-          dispatcher.on("end", end => {VC.leave()});
+          dispatcher.on("finish", () => {VC.leave()});
         })
       break;
       
@@ -218,7 +218,7 @@ client.on("message", msg => {
       VC.join()
         .then(connection => {
           const dispatcher = connection.play("noises/fart.wav")
-          dispatcher.on("end", end => {VC.leave()});
+          dispatcher.on("finish", () => {VC.leave()});
         })
       break;
       
@@ -230,7 +230,7 @@ client.on("message", msg => {
       VC.join()
         .then(connection => {
           const dispatcher = connection.play("noises/struggle.wav")
-          dispatcher.on("end", end => {VC.leave()});
+          dispatcher.on("finish", () => {VC.leave()});
         })
       break;
       
@@ -242,7 +242,7 @@ client.on("message", msg => {
       VC.join()
         .then(connection => {
           const dispatcher = connection.play("noises/wah.mp3")
-          dispatcher.on("end", end => {VC.leave()});
+          dispatcher.on("finish", () => {VC.leave()});
         })
       break;
       
@@ -254,7 +254,7 @@ client.on("message", msg => {
       VC.join()
         .then(connection => {
           const dispatcher = connection.play("noises/breathe.wav")
-          dispatcher.on("end", end => {VC.leave()});
+          dispatcher.on("finish", () => {VC.leave()});
         })
       break;
       
@@ -266,7 +266,7 @@ client.on("message", msg => {
       VC.join()
         .then(connection => {
           const dispatcher = connection.play("noises/scream-female.wav")
-          dispatcher.on("end", end => {VC.leave()});
+          dispatcher.on("finish", () => {VC.leave()});
         })
       break;
       
@@ -278,7 +278,7 @@ client.on("message", msg => {
       VC.join()
         .then(connection => {
           const dispatcher = connection.play("noises/wetfart.wav")
-          dispatcher.on("end", end => {VC.leave()});
+          dispatcher.on("finish", () => {VC.leave()});
         })
       break;
       
@@ -290,18 +290,8 @@ client.on("message", msg => {
       VC.join()
         .then(connection => {
           const dispatcher = connection.play("noises/speak.wav")
-          dispatcher.on("end", end => {VC.leave()});
+          dispatcher.on("finish", () => {VC.leave()});
         })
-      break;
-      
-    case MsgContent.startsWith("mr, vctest"):
-      var VC = msg.member.voice.channel;
-      if (!VC) {
-        return msg.channel.send("You aren't in a voice channel. Please join one and try again")
-      }
-      VC.join()
-        .then(connection => {const dispatcher = connection.play("noises/struggle.wav")})
-        .then(VC.leave())
       break;
       
     case MsgContent.startsWith("mr, leave"):
