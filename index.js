@@ -146,14 +146,7 @@ client.on("message", msg => {
       else {
         AllArgs = msg.content.slice(7)
       }
-      var PenisSize = ""
-      console.log(AllArgs)
-      if (AllArgs == "<@704724304130080770>" || AllArgs == "<@!704724304130080770>" || AllArgs == "<@684815813269913654>" || AllArgs == "<@!684815813269913654>" ) {
-        PenisSize = "=".repeat(Math.random() * 11)
-      }
-      else {
-        PenisSize = "=".repeat(Math.random() * 31)
-      }
+      var PenisSize = "=".repeat(Math.random() * 31)
       PenisEmbed.setDescription(AllArgs + "'s penis:\n8" + PenisSize + "D")
       PenisEmbed.setColor(Math.floor(Math.random() * 16777215))
       msg.channel.send(PenisEmbed)
@@ -166,7 +159,7 @@ client.on("message", msg => {
       else {
         AllArgs = msg.content.slice(10)
       }
-      var ChodeSize = '━'.repeat(Math.random() * 15)
+      var ChodeSize = '━'.repeat(Math.random() * 16)
       ChodeEmbed.setDescription(AllArgs + "'s chode:\nO" + ChodeSize + "╮\nO" + ChodeSize + "╯")
       ChodeEmbed.setColor(Math.floor(Math.random() * 16777215))
       msg.channel.send(ChodeEmbed)
