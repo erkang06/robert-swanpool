@@ -300,8 +300,7 @@ client.on("message", msg => {
         return msg.channel.send("You aren't in a voice channel. Please join one and try again")
       }
       VC.join()
-        .then(connection => {
-          const dispatcher = connection.play("noises/struggle.wav")
+        .then(connection => {const dispatcher = connection.play("noises/struggle.wav")})
         .then(VC.leave())
       break;
       
