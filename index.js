@@ -15,17 +15,17 @@ const client = new Discord.Client({
 });
 
 client.on("ready", () => {
-  client.channels.cache.get("709674340504829974").send("Hey guys, I'm back")
+  client.channels.cache.get("844595681607811125").send("Hey guys, I'm back")
   console.log(`Logged in as ${client.user.tag}!`)
 })
 
 const HelpEmbed = new Discord.MessageEmbed()
   .setTitle("Every command there is")
   .addFields(
-    {name: "Rates", value: "qwordrate\nfurryrate\ngayrate\ndankrate\ngamerrate\nthotrate", inline: true},
-    {name: "Talking to Robert", value: "hello/hi\nwill you marry me?\nsend a selfie\nsmell me", inline: false},
-    {name: "Voice Channel", value: "kpop\nkpopsongs\nburp\nfart\nwetfart\nstruggle\nwah\nbreathe\nscream\nspeak\nleave", inline: true},
-    {name: "Others", value: "insult\npp\nstatus (p/l/w)", inline: false}
+    {name: "Rates", value: "qwordrate\nfurryrate\ngayrate\ndankrate\ngamerrate\nthotrate"},
+    {name: "Talking to Robert", value: "hello/hi\nwill you marry me?\nsend a selfie\nsmell me", inline: true},
+    {name: "Voice Channel", value: "kpop\nkpopsongs\nburp\nfart\nwetfart\nstruggle\nwah\nbreathe\nscream\nspeak\nleave"},
+    {name: "Others", value: "insult\npp\nstatus (p/l/w)", inline: true}
   )
   .setThumbnail("https://cdn.discordapp.com/avatars/849711698737758298/9fb82f17f708ec69bc2a39c375d0ad2e.png")
   .setFooter("Type 'mr,' followed by the cmd you want to use");
