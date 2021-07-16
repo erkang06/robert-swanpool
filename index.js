@@ -204,6 +204,7 @@ client.on("message", msg => {
         pingmsg.delete()
         PingEmbed.setDescription(`Latency is ${pingmsg.createdTimestamp - msg.createdTimestamp}ms\nAPI Latency is ${Math.round(client.ws.ping)}ms`)
         PingEmbed.setColor(RandColour())
+        msg.channel.send(PingEmbed)
       })
       break;
       
