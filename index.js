@@ -221,6 +221,7 @@ client.on("message", msg => {
       }
       VC.join()
         .then(connection => {
+          connection.voice.setSelfDeaf(true)
           msg.channel.send("Playing: " + AllArgs.slice(0, -4))
           const dispatcher = connection.play("Kpop/" + AllArgs)
           dispatcher.on("finish", () => {VC.leave()});
@@ -234,6 +235,7 @@ client.on("message", msg => {
       }
       VC.join()
         .then(connection => {
+          connection.voice.setSelfDeaf(true)
           const dispatcher = connection.play("noises/burp.wav")
           dispatcher.on("finish", () => {VC.leave()});
         })
@@ -246,6 +248,7 @@ client.on("message", msg => {
       }
       VC.join()
         .then(connection => {
+          connection.voice.setSelfDeaf(true)
           const dispatcher = connection.play("noises/fart.wav")
           dispatcher.on("finish", () => {VC.leave()});
         })
@@ -258,6 +261,7 @@ client.on("message", msg => {
       }
       VC.join()
         .then(connection => {
+          connection.voice.setSelfDeaf(true)
           const dispatcher = connection.play("noises/struggle.wav")
           dispatcher.on("finish", () => {VC.leave()});
         })
@@ -270,6 +274,7 @@ client.on("message", msg => {
       }
       VC.join()
         .then(connection => {
+          connection.voice.setSelfDeaf(true)
           const dispatcher = connection.play("noises/wah.mp3")
           dispatcher.on("finish", () => {VC.leave()});
         })
@@ -282,6 +287,7 @@ client.on("message", msg => {
       }
       VC.join()
         .then(connection => {
+          connection.voice.setSelfDeaf(true)
           const dispatcher = connection.play("noises/breathe.wav")
           dispatcher.on("finish", () => {VC.leave()});
         })
@@ -294,6 +300,7 @@ client.on("message", msg => {
       }
       VC.join()
         .then(connection => {
+          connection.voice.setSelfDeaf(true)
           const dispatcher = connection.play("noises/scream-female.wav")
           dispatcher.on("finish", () => {VC.leave()});
         })
@@ -306,6 +313,7 @@ client.on("message", msg => {
       }
       VC.join()
         .then(connection => {
+          connection.voice.setSelfDeaf(true)
           const dispatcher = connection.play("noises/wetfart.wav")
           dispatcher.on("finish", () => {VC.leave()});
         })
@@ -318,6 +326,7 @@ client.on("message", msg => {
       }
       VC.join()
         .then(connection => {
+          connection.voice.setSelfDeaf(true)
           const dispatcher = connection.play("noises/speak.wav")
           dispatcher.on("finish", () => {VC.leave()});
         })
