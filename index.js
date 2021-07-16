@@ -25,7 +25,7 @@ const HelpEmbed = new Discord.MessageEmbed()
     {name: "Rates", value: "qwordrate\nfurryrate\ngayrate\ndankrate\ngamerrate\nthotrate"},
     {name: "Talking to Robert", value: "hello/hi\nwill you marry me?\nsend a selfie\nsmell me"},
     {name: "Voice Channel", value: "kpop\nkpopsongs\nburp\nfart\nwetfart\nstruggle\nwah\nbreathe\nscream\nspeak\nleave"},
-    {name: "Others", value: "insult\npp/penis\nchode\nstatus (p/l/w)"}
+    {name: "Others", value: "insult\npp/penis\nchode\nservers\nstatus (p/l/w)"}
   )
   .setThumbnail("https://cdn.discordapp.com/avatars/849711698737758298/9fb82f17f708ec69bc2a39c375d0ad2e.png")
   .setFooter("Type 'mr,' followed by the cmd you want to use");
@@ -191,6 +191,10 @@ client.on("message", msg => {
     case MsgContent.startsWith("mr, kpopsongs"):
       KpopEmbed.setColor(Math.floor(Math.random() * 16777215))
       msg.channel.send(KpopEmbed)
+      break;
+      
+    case MsgContent.startsWith("mr, servers"):
+      msg.channel.send(`Currently in ${client.guilds.cache.size} servers`)
       break;
       
     case MsgContent.startsWith("mr, kpop"):
