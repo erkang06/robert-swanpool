@@ -193,9 +193,9 @@ client.on("message", msg => {
       break;
     
     case MsgContent.startsWith("mr, ping"):
-      message.channel.send('Loading data').then (async (msg) =>{
-        msg.delete()
-        message.channel.send(`🏓Latency is ${msg.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ws.ping)}ms`);
+      msg.channel.send('Loading data').then(async (pingmsg) => {
+        pingmsg.delete()
+        msg.channel.send(`🏓Latency is ${pingmsg.createdTimestamp - msg.createdTimestamp}ms. API Latency is ${Math.round(client.ws.ping)}ms`);
       })
       
     case MsgContent.startsWith("mr, kpopsongs"):
