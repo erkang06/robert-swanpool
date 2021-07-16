@@ -19,6 +19,10 @@ client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`)
 })
 
+function RandColour() {
+  return(Math.floor(Math.random() * 16777215))
+}
+
 const HelpEmbed = new Discord.MessageEmbed()
   .setTitle("Every command there is")
   .addFields(
@@ -59,7 +63,7 @@ function Rate(MsgContent, LenMsg, Author, WhichRate) {
   RateEmbed.setDescription(Rating)
   RateEmbed.setThumbnail(RatePic)
   RateEmbed.setFooter(Howratey)
-  RateEmbed.setColor(Math.floor(Math.random() * 16777215))
+  RateEmbed.setColor(RandColour())
 }
 
 const PenisEmbed = new Discord.MessageEmbed()
@@ -75,6 +79,9 @@ const SmellEmbed = new Discord.MessageEmbed()
 const InsultEmbed = new Discord.MessageEmbed()
   .setTitle("Insult:")
   .setFooter("Feel hurt?")
+
+const PingEmbed = new Discord.MessageEmbed()
+  .setTitle("Ping")
 
 var KpopSongs = SUPERJSON.Kpop.join("\n")
 KpopSongs = KpopSongs.split(".m4a").join("")
@@ -92,7 +99,7 @@ client.on("message", msg => {
       break;
     
     case MsgContent.startsWith("mr, help"):
-      HelpEmbed.setColor(Math.floor(Math.random() * 16777215))
+      HelpEmbed.setColor(RandColour())
       msg.author.send(HelpEmbed)
       msg.react("👍")
       break;
@@ -148,7 +155,7 @@ client.on("message", msg => {
       }
       var PenisSize = "=".repeat(Math.random() * 31)
       PenisEmbed.setDescription(AllArgs + "'s penis:\n8" + PenisSize + "D")
-      PenisEmbed.setColor(Math.floor(Math.random() * 16777215))
+      PenisEmbed.setColor(RandColour())
       msg.channel.send(PenisEmbed)
       break;
       
@@ -161,7 +168,7 @@ client.on("message", msg => {
       }
       var ChodeSize = '━'.repeat(Math.random() * 16)
       ChodeEmbed.setDescription(AllArgs + "'s chode:\nO" + ChodeSize + "╮\nO" + ChodeSize + "╯")
-      ChodeEmbed.setColor(Math.floor(Math.random() * 16777215))
+      ChodeEmbed.setColor(RandColour())
       msg.channel.send(ChodeEmbed)
       break;
     
@@ -172,7 +179,7 @@ client.on("message", msg => {
 
     case MsgContent.startsWith("mr, smell me"):
       SmellEmbed.setDescription("You smell " + Sentencer.make("{{ adjective }}"))
-      SmellEmbed.setColor(Math.floor(Math.random() * 16777215))
+      SmellEmbed.setColor(RandColour())
       msg.channel.send(SmellEmbed)
       break;
 
@@ -184,7 +191,7 @@ client.on("message", msg => {
         AllArgs = msg.content.slice(11)
       }
       InsultEmbed.setDescription(AllArgs + " is " + Sentencer.make("{{ an_adjective }}") + " " + Sentencer.make("{{ noun }}"))
-      InsultEmbed.setColor(Math.floor(Math.random() * 16777215))
+      InsultEmbed.setColor(RandColour())
       msg.channel.send(InsultEmbed)
       break;
       
@@ -195,11 +202,13 @@ client.on("message", msg => {
     case MsgContent.startsWith("mr, ping"):
       msg.channel.send('Loading data').then(async (pingmsg) => {
         pingmsg.delete()
-        msg.channel.send(`🏓Latency is ${pingmsg.createdTimestamp - msg.createdTimestamp}ms. API Latency is ${Math.round(client.ws.ping)}ms`);
+        PingEmbed.setDescription(`Latency is ${pingmsg.createdTimestamp - msg.createdTimestamp}ms\nAPI Latency is ${Math.round(client.ws.ping)}ms`)
+        PingEmbed.setColor(RandColour())
       })
+      break;
       
     case MsgContent.startsWith("mr, kpopsongs"):
-      KpopEmbed.setColor(Math.floor(Math.random() * 16777215))
+      KpopEmbed.setColor(RandColour())
       msg.channel.send(KpopEmbed)
       break;
       
