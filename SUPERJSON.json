@@ -62,5 +62,15 @@
     "GALAXY - LADIES’ CODE.m4a",
     "GRWM - GFRIEND.m4a",
     "Doom Doom Ta - TRI.BE.m4a"
+  ],
+  "Noises": [
+    "burp",
+    "fart",
+    "wetfart",
+    "struggle",
+    "wah",
+    "breathe",
+    "scream",
+    "speak"
   ]
 }
