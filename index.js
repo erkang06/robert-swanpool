@@ -23,12 +23,20 @@ function RandColour() {
   return(Math.floor(Math.random() * 16777215))
 }
 
+function syncDelay(milliseconds) {
+    var start = new Date().getTime();
+    var end = 0;
+    while ((end - start) < milliseconds) {
+        end = new Date().getTime();
+    }
+}
+
 const HelpEmbed = new Discord.MessageEmbed()
   .setTitle("Every command there is")
   .addFields(
     {name: "Rates", value: "qwordrate\nfurryrate\ngayrate\ndankrate\ngamerrate\nthotrate"},
     {name: "Talking to Robert", value: "hello/hi\nwill you marry me?\nsend a selfie\nsmell me"},
-    {name: "Voice Channel", value: "kpop\nkpopsongs\nburp\nfart\nwetfart\nstruggle\nwah\nbreathe\nscream\nspeak\nleave"},
+    {name: "Voice Channel", value: "kpop\nkpopsongs\n" + SUPERJSON.Noises.join("\n") + "\nleave"},
     {name: "Others", value: "insult\npp/penis\nchode\nservers\nping\nstatus (p/l/w)"}
   )
   .setThumbnail("https://cdn.discordapp.com/avatars/849711698737758298/9fb82f17f708ec69bc2a39c375d0ad2e.png")
@@ -225,6 +233,21 @@ client.on("message", msg => {
           msg.channel.send("Playing: " + AllArgs.slice(0, -4))
           const dispatcher = connection.play("Kpop/" + AllArgs)
           dispatcher.on("finish", () => {VC.leave()});
+        })
+      break;
+
+    case MsgContent.startsWith("mr, join"):
+      var VC = msg.member.voice.channel;
+      if (!VC) {
+        return msg.channel.send("You aren't in a voice channel. Please join one and try again")
+      }
+      VC.join()
+        .then(connection => {
+          connection.voice.setSelfDeaf(true)
+          while (true) {
+            const dispatcher = connection.play("noises/" + "Math.floor(Math.random() * SUPERJSON.Noises.length)")
+            dispatcher.on("finish", () => {syncDelay(Math.floor(Math.random() * 4000) + 1000)});
+          }
         })
       break;
       
