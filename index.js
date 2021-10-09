@@ -15,7 +15,7 @@ const client = new Discord.Client({
 });
 
 client.on("ready", () => {
-  client.channels.cache.get("844595681607811125").send("Hey guys, I'm back")
+  client.channels.cache.get("709674340504829974").send("Hey guys, I'm back")
   console.log(`Logged in as ${client.user.tag}!`)
 })
 
