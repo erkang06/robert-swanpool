@@ -194,6 +194,54 @@ client.on("message", msg => {
       InsultEmbed.setColor(RandColour())
       msg.channel.send(InsultEmbed)
       break;
+    
+    case MsgContent.startsWith("mr, emoji"):
+      const ListMsg = MsgContent.slice(10).split("")
+      let EmojiReply = []
+      console.log(ListMsg)
+      let LenListMsg = ListMsg.length;
+
+      for (var i = 0; i < LenListMsg; i++) {
+        var Char = ListMsg[i]
+        if (Char.toUpperCase() != Char.toLowerCase()) {
+          EmojiReply.push(`:regional_indicator_${Char}:`)
+        }
+        else if (Char == " ") {
+          EmojiReply.push("     ")
+        }
+        else if (isNaN(Char) == false) {
+          EmojiReply.push(`:${NumToWord.toWords(Char)}:`)
+        }
+        else {
+          switch (Char) {
+            case "!":
+              EmojiReply.push(":exclamation:")
+              break;
+            case "?":
+              EmojiReply.push(":question:")
+              break;
+            case "+":
+              EmojiReply.push(":heavy_plus_sign:")
+              break;
+            case "-":
+              EmojiReply.push(":heavy_minus_sign:")
+              break;
+            case "*":
+              EmojiReply.push(":heavy_multiplication_x:")
+              break;
+            case "/":
+              EmojiReply.push(":heavy_division_sign:")
+              break;
+          }
+        }
+      }
+      if (EmojiReply == true) {
+        msg.channel.send(EmojiReply.join(" "))
+      }
+      else {
+        msg.channel.send("None of the characters have an emoji form")
+      }
+      break;
       
     case MsgContent.startsWith("mr, servers"):
       msg.channel.send(`I am currently in ${client.guilds.cache.size} servers`)
