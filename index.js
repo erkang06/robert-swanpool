@@ -236,7 +236,7 @@ client.on("message", msg => {
           }
         }
       }
-      if (EmojiReply == true) {
+      if (EmojiReply) {
         msg.channel.send(EmojiReply.join(" "))
       }
       else {
