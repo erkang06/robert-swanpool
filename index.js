@@ -236,11 +236,11 @@ client.on("message", msg => {
           }
         }
       }
-      if (EmojiReply) {
-        msg.channel.send(EmojiReply.join(" "))
+      if (EmojiReply.length == 0) {
+        msg.channel.send("None of the characters have an emoji form")
       }
       else {
-        msg.channel.send("None of the characters have an emoji form")
+        msg.channel.send(EmojiReply.join(" "))
       }
       break;
       
