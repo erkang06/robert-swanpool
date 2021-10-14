@@ -30,7 +30,7 @@ const HelpEmbed = new Discord.MessageEmbed()
     {name: "Rates", value: "qwordrate\nfurryrate\ngayrate\ndankrate\ngamerrate\nthotrate"},
     {name: "Talking to Robert", value: "hello/hi\nwill you marry me?\nsend a selfie\nsmell me"},
     {name: "Voice Channel", value: "kpop\nkpopsongs\n" + SUPERJSON.Noises.join("\n") + "\nleave"},
-    {name: "Others", value: "insult\npp/penis\nchode\nservers\nping\nstatus (p/l/w)"}
+    {name: "Others", value: "insult\npp/penis\nchode\nemoji\nservers\nping\nstatus (p/l/w)"}
   )
   .setThumbnail("https://cdn.discordapp.com/avatars/849711698737758298/9fb82f17f708ec69bc2a39c375d0ad2e.png")
   .setFooter("Type 'mr,' followed by the cmd you want to use");
