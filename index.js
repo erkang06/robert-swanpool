@@ -241,7 +241,6 @@ client.on("message", msg => {
             EmojiReply.push(EmojiChar(Char))
           }
           catch {}
-          }
         }
       }
       if (!EmojiReply.join("").replace(/\s/g, '').length) {
