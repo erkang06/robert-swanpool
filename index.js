@@ -81,6 +81,29 @@ const InsultEmbed = new Discord.MessageEmbed()
   .setTitle("Insult:")
   .setFooter("Feel hurt?")
 
+function EmojiChar(Char) {
+  switch (Char) {
+    case "!":
+      return ":exclamation:"
+      break;
+    case "?":
+      return ":question:"
+      break;
+    case "+":
+      return ":heavy_plus_sign:"
+      break;
+    case "-":
+      return ":heavy_minus_sign:"
+      break;
+    case "*":
+      return ":heavy_multiplication_x:"
+      break;
+    case "/":
+      return ":heavy_division_sign:"
+      break;
+  }
+}
+
 const PingEmbed = new Discord.MessageEmbed()
   .setTitle("Ping")
 
@@ -214,25 +237,10 @@ client.on("message", msg => {
           EmojiReply.push(`:${NumToWord.toWords(Char)}:`)
         }
         else {
-          switch (Char) {
-            case "!":
-              EmojiReply.push(":exclamation:")
-              break;
-            case "?":
-              EmojiReply.push(":question:")
-              break;
-            case "+":
-              EmojiReply.push(":heavy_plus_sign:")
-              break;
-            case "-":
-              EmojiReply.push(":heavy_minus_sign:")
-              break;
-            case "*":
-              EmojiReply.push(":heavy_multiplication_x:")
-              break;
-            case "/":
-              EmojiReply.push(":heavy_division_sign:")
-              break;
+          try {
+            EmojiReply.push(EmojiChar(Char))
+          }
+          catch {}
           }
         }
       }
