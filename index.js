@@ -236,7 +236,7 @@ client.on("message", msg => {
           }
         }
       }
-      if (EmojiReply.length == 0) {
+      if (!EmojiReply.join("").replace(/\s/g, '').length) {
         msg.channel.send("None of the characters have an emoji form")
       }
       else {
