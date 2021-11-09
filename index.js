@@ -114,6 +114,8 @@ const KpopEmbed = new Discord.MessageEmbed()
   .setDescription(KpopSongs)
   .setFooter("Type 'mr, kpop' in a voice channel to use it");
 
+const Noises = SUPERJSON.Noises
+
 client.on("message", msg => {
   const MsgContent = msg.content.toLowerCase()
   let AllArgs = ""
@@ -284,7 +286,14 @@ client.on("message", msg => {
         })
       break;
       
-    case MsgContent.startsWith("mr, burp"):
+    case MsgContent.startsWith("mr, noise"):
+      AllArgs = MsgContent.slice(7)
+      if (!AllArgs) {
+        return msg.channel.send("You didn't specify a noise. Please try again")
+      }
+      else if (!Noises.includes(AllArgs)) {
+        return msg.channel.send("The noise you chose doesn't exist. Please try again")
+      }
       var VC = msg.member.voice.channel;
       if (!VC) {
         return msg.channel.send("You aren't in a voice channel. Please join one and try again")
@@ -292,7 +301,7 @@ client.on("message", msg => {
       VC.join()
         .then(connection => {
           connection.voice.setSelfDeaf(true)
-          const dispatcher = connection.play("noises/burp.wav")
+          const dispatcher = connection.play(`noises/${AllArgs}.wav`)
           dispatcher.on("finish", () => {VC.leave()});
         })
       break;
