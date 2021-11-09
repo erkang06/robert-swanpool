@@ -29,7 +29,7 @@ const HelpEmbed = new Discord.MessageEmbed()
   .addFields(
     {name: "Rates", value: "qwordrate\nfurryrate\ngayrate\ndankrate\ngamerrate\nthotrate"},
     {name: "Talking to Robert", value: "hello/hi\nwill you marry me?\nsend a selfie\nsmell me"},
-    {name: "Voice Channel", value: "kpop\nkpopsongs\n" + SUPERJSON.Noises.join("\n") + "\nleave"},
+    {name: "Voice Channel", value: "kpop\nkpopsongs\nnoise (add one of the below)\n" + SUPERJSON.Noises.join(", ") + "\nleave"},
     {name: "Others", value: "insult\npp/penis\nchode\nemoji\nservers\nping\nstatus (p/l/w)"}
   )
   .setThumbnail("https://cdn.discordapp.com/avatars/849711698737758298/9fb82f17f708ec69bc2a39c375d0ad2e.png")
@@ -307,98 +307,7 @@ client.on("message", msg => {
           dispatcher.on("finish", () => {VC.leave()});
         })
       break;
-      
-    case MsgContent.startsWith("mr, fart"):
-      var VC = msg.member.voice.channel;
-      if (!VC) {
-        return msg.channel.send("You aren't in a voice channel. Please join one and try again")
-      }
-      VC.join()
-        .then(connection => {
-          connection.voice.setSelfDeaf(true)
-          const dispatcher = connection.play("noises/fart.wav")
-          dispatcher.on("finish", () => {VC.leave()});
-        })
-      break;
-      
-    case MsgContent.startsWith("mr, struggle"):
-      var VC = msg.member.voice.channel;
-      if (!VC) {
-        return msg.channel.send("You aren't in a voice channel. Please join one and try again")
-      }
-      VC.join()
-        .then(connection => {
-          connection.voice.setSelfDeaf(true)
-          const dispatcher = connection.play("noises/struggle.wav")
-          dispatcher.on("finish", () => {VC.leave()});
-        })
-      break;
-      
-    case MsgContent.startsWith("mr, wah"):
-      var VC = msg.member.voice.channel;
-      if (!VC) {
-        return msg.channel.send("You aren't in a voice channel. Please join one and try again")
-      }
-      VC.join()
-        .then(connection => {
-          connection.voice.setSelfDeaf(true)
-          const dispatcher = connection.play("noises/wah.mp3")
-          dispatcher.on("finish", () => {VC.leave()});
-        })
-      break;
-      
-    case MsgContent.startsWith("mr, breathe"):
-      var VC = msg.member.voice.channel;
-      if (!VC) {
-        return msg.channel.send("You aren't in a voice channel. Please join one and try again")
-      }
-      VC.join()
-        .then(connection => {
-          connection.voice.setSelfDeaf(true)
-          const dispatcher = connection.play("noises/breathe.wav")
-          dispatcher.on("finish", () => {VC.leave()});
-        })
-      break;
-      
-    case MsgContent.startsWith("mr, scream"):
-      var VC = msg.member.voice.channel;
-      if (!VC) {
-        return msg.channel.send("You aren't in a voice channel. Please join one and try again")
-      }
-      VC.join()
-        .then(connection => {
-          connection.voice.setSelfDeaf(true)
-          const dispatcher = connection.play("noises/scream-female.wav")
-          dispatcher.on("finish", () => {VC.leave()});
-        })
-      break;
-      
-    case MsgContent.startsWith("mr, wetfart"):
-      var VC = msg.member.voice.channel;
-      if (!VC) {
-        return msg.channel.send("You aren't in a voice channel. Please join one and try again")
-      }
-      VC.join()
-        .then(connection => {
-          connection.voice.setSelfDeaf(true)
-          const dispatcher = connection.play("noises/wetfart.wav")
-          dispatcher.on("finish", () => {VC.leave()});
-        })
-      break;
-      
-    case MsgContent.startsWith("mr, speak"):
-      var VC = msg.member.voice.channel;
-      if (!VC) {
-        return msg.channel.send("You aren't in a voice channel. Please join one and try again")
-      }
-      VC.join()
-        .then(connection => {
-          connection.voice.setSelfDeaf(true)
-          const dispatcher = connection.play("noises/speak.wav")
-          dispatcher.on("finish", () => {VC.leave()});
-        })
-      break;
-      
+
     case MsgContent.startsWith("mr, leave"):
       switch(true) {
         case msg.guild.me.voice.channel == undefined:
