@@ -287,7 +287,9 @@ client.on("message", msg => {
       break;
       
     case MsgContent.startsWith("mr, noise"):
-      AllArgs = MsgContent.slice(7)
+      AllArgs = MsgContent.slice(10)
+      console.log(AllArgs)
+      console.log(Noises)
       if (!AllArgs) {
         return msg.channel.send("You didn't specify a noise. Please try again")
       }
