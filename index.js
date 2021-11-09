@@ -116,6 +116,20 @@ const KpopEmbed = new Discord.MessageEmbed()
 
 const Noises = SUPERJSON.Noises
 
+function StatusActivity(Letter) {
+  switch (Letter) {
+        case "p":
+          return "PLAYING"
+          break;
+        case "l":
+          return "LISTENING"
+          break;
+        case "w":
+          return "WATCHING"
+          break;
+  }
+}  
+
 client.on("message", msg => {
   const MsgContent = msg.content.toLowerCase()
   let AllArgs = ""
@@ -288,8 +302,6 @@ client.on("message", msg => {
       
     case MsgContent.startsWith("mr, noise"):
       AllArgs = MsgContent.slice(10)
-      console.log(AllArgs)
-      console.log(Noises)
       if (!AllArgs) {
         return msg.channel.send("You didn't specify a noise. Please try again")
       }
@@ -326,18 +338,7 @@ client.on("message", msg => {
       break;
     
     case MsgContent.startsWith("mr, status"):
-      var Status = ""
-      switch (MsgContent.slice(11, 12)) {
-        case "p":
-          Status = "PLAYING"
-          break;
-        case "l":
-          Status = "LISTENING"
-          break;
-        case "w":
-          Status = "WATCHING"
-          break;
-      }
+      const Status = StatusActivity(MsgContent.slice(11, 12))
       if (Status) {
         AllArgs = msg.content.slice(13)
         client.user.setPresence({activity: {type: Status, name: AllArgs}})
