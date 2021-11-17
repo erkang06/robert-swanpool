@@ -29,7 +29,7 @@ const HelpEmbed = new Discord.MessageEmbed()
   .addFields(
     {name: "Rates", value: "qwordrate\nfurryrate\ngayrate\ndankrate\ngamerrate\nthotrate"},
     {name: "Talking to Robert", value: "hello/hi\nwill you marry me?\nsend a selfie\nsmell me"},
-    {name: "Voice Channel", value: "kpop\nkpopsongs\nnoise (add one of the below)\n" + SUPERJSON.Noises.join(", ") + "\nleave"},
+    {name: "Voice Channel", value: "kpop\nkpopsongs\nvc (add one of the below)\n" + SUPERJSON.Noises.join(", ") + "\nleave"},
     {name: "Others", value: "insult\npp/penis\nchode\nemoji\nservers\nping\nstatus (p/l/w)"}
   )
   .setThumbnail("https://cdn.discordapp.com/avatars/849711698737758298/9fb82f17f708ec69bc2a39c375d0ad2e.png")
@@ -300,8 +300,8 @@ client.on("message", msg => {
         })
       break;
       
-    case MsgContent.startsWith("mr, noise"):
-      AllArgs = MsgContent.slice(10)
+    case MsgContent.startsWith("mr, vc"):
+      AllArgs = MsgContent.slice(7)
       if (!AllArgs) {
         return msg.channel.send("You didn't specify a noise. Please try again")
       }
