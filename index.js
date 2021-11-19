@@ -291,6 +291,10 @@ client.on("message", msg => {
       if (!VC) {
         return msg.channel.send("You aren't in a voice channel. Please join one and try again")
       }
+      else if (!msg.guild) {
+        return msg.channel.send("This command only works in a server. Please try again")
+        break;
+      }
       VC.join()
         .then(connection => {
           connection.voice.setSelfDeaf(true)
@@ -307,6 +311,10 @@ client.on("message", msg => {
       }
       else if (!Noises.includes(AllArgs)) {
         return msg.channel.send("The noise you chose doesn't exist. Please try again")
+      }
+      else if (!msg.guild) {
+        return msg.channel.send("This command only works in a server. Please try again")
+        break;
       }
       var VC = msg.member.voice.channel
       if (!msg.member.voice.channel) {
