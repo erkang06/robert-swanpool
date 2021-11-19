@@ -308,7 +308,7 @@ client.on("message", msg => {
       else if (!Noises.includes(AllArgs)) {
         return msg.channel.send("The noise you chose doesn't exist. Please try again")
       }
-      const VC = msg.member.voice.channel
+      var VC = msg.member.voice.channel
       if (!msg.member.voice.channel) {
         return msg.channel.send("You aren't in a voice channel. Please join one and try again")
         break;
