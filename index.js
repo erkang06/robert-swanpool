@@ -1,6 +1,5 @@
 const Discord = require("discord.js")
 const Sentencer = require('sentencer')
-const fs = require('fs')
 const ffmpeg = require('ffmpeg')
 const NumToWord = require('number-to-words')
 const { OpusEncoder } = require('@discordjs/opus')
