@@ -248,7 +248,7 @@ client.on("message", msg => {
         else if (Char == " ") {
           EmojiReply.push("     ")
         }
-        else if (isNaN(Char) == false) {
+        else if (!isNaN(Char)) {
           EmojiReply.push(`:${NumToWord.toWords(Char)}:`)
         }
         else {
