@@ -15,7 +15,6 @@ const client = new Discord.Client({
 });
 
 client.on("ready", () => {
-  client.users.cache.get(process.env.MYID).send("Online")
   console.log(`Logged in as ${client.user.tag}!`)
 })
 
