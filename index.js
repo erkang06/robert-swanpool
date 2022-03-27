@@ -14,7 +14,9 @@ const client = new Discord.Client({
   },
 });
 
-client.on("ready", () => {
+client.on("ready", async () => {
+  let CheckID = await client.users.fetch(process.env.MYID)
+  CheckID.send("Hello, how are you doing?");
   console.log(`Logged in as ${client.user.tag}!`)
 })
 
