@@ -238,7 +238,6 @@ client.on("message", msg => {
     case MsgContent.startsWith("mr, emoji"):
       const ListMsg = MsgContent.slice(10).split("")
       let EmojiReply = []
-      console.log(ListMsg)
       let LenListMsg = ListMsg.length;
 
       for (var i = 0; i < LenListMsg; i++) {
