@@ -134,7 +134,7 @@ client.on("message", msg => {
   const MsgContent = msg.content.toLowerCase()
   let AllArgs = ""
   switch (true) {
-    case msg.content.endsWith("prayer.") && msg.author.id == "204255221017214977" && msg.channel.id == "828274056440446976":
+    case msg.content.endsWith("prayer.") && msg.author.id == process.env.PRAYAUTH && msg.channel.id == process.env.PRAYCHAN:
       msg.channel.send(":pray:")
       break;
     
