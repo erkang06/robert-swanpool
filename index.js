@@ -1,4 +1,3 @@
-const DotEnv = require('dotenv').config();
 const Discord = require("discord.js")
 const ffmpeg = require('ffmpeg')
 const { OpusEncoder } = require('@discordjs/opus')
