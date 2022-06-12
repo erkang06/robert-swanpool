@@ -31,7 +31,7 @@ const HelpEmbed = new Discord.MessageEmbed()
     {name: "Rates", value: "qwordrate\nfurryrate\ngayrate\ndankrate\ngamerrate\nthotrate"},
     {name: "Talking to Robert", value: "hello/hi\nwill you marry me?\nsend a selfie\nsmell me"},
     {name: "Voice Channel", value: "kpop\nkpopsongs\nvc (add one of the below)\n" + Noises.join(", ") + "\nleave"},
-    {name: "Others", value: "insult\npp/penis\nchode\nfitorshit\nemoji\nservers\nping\nstatus (p/l/w)"}
+    {name: "Others", value: "insult\npp/penis\nchode\nfitorshit\nsmashorpass\nemoji\nservers\nping\nstatus (p/l/w)"}
   )
   .setThumbnail("https://cdn.discordapp.com/avatars/849711698737758298/9fb82f17f708ec69bc2a39c375d0ad2e.png")
   .setFooter("Type 'mr,' followed by the cmd you want to use");
@@ -112,7 +112,11 @@ const FitOrShitEmbed = new Discord.MessageEmbed()
   .setTitle("Fit or Shit")
   .setFooter("Vote with the 👍 or 👎 reactions below")
 
-const FitOrShitCelebs = SUPERJSON.Celebrities
+const SmashOrPassEmbed = new Discord.MessageEmbed()
+  .setTitle("Smash or Pass")
+  .setFooter("Vote with the 👍 or 👎 reactions below")
+
+const Celebrities = SUPERJSON.Celebrities
 
 var KpopSongs = SUPERJSON.Kpop.join("\n")
 KpopSongs = KpopSongs.split(".m4a").join("")
@@ -301,6 +305,29 @@ client.on("message", msg => {
       }
       FitOrShitEmbed.setColor(RandColour())
       msg.channel.send(FitOrShitEmbed)
+        .then (function (Embed) {
+          Embed.react("👍")
+          Embed.react("👎")
+        })
+      break;
+
+    case MsgContent.startsWith("mr, smashorpass"):
+      if (MsgContent.length == 15) {
+        Celebrity = Celebrities[Math.floor(Math.random() * Celebrities.length)]
+        SmashOrPassEmbed.setDescription(Celebrity.name)
+        try {
+          SmashOrPassEmbed.setImage(Celebrity.pic)
+        } 
+        catch (error) {
+          return;
+        }
+      }
+      else {
+        SmashOrPassEmbed.setDescription(msg.content.slice(16))
+        SmashOrPassEmbed.setImage()
+      }
+      SmashOrPassEmbed.setColor(RandColour())
+      msg.channel.send(SmashOrPassEmbed)
         .then (function (Embed) {
           Embed.react("👍")
           Embed.react("👎")
