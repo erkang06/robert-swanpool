@@ -1,8 +1,9 @@
+const DotEnv = require('dotenv').config();
 const Discord = require("discord.js")
-const Sentencer = require('sentencer')
 const ffmpeg = require('ffmpeg')
-const NumToWord = require('number-to-words')
 const { OpusEncoder } = require('@discordjs/opus')
+const Sentencer = require('sentencer')
+const NumToWord = require('number-to-words')
 const SUPERJSON = require("./SUPERJSON.json");
 
 const client = new Discord.Client({
@@ -24,13 +25,14 @@ function RandColour() {
   return(Math.floor(Math.random() * 16777215))
 }
 
+const Noises = SUPERJSON.Noises
 const HelpEmbed = new Discord.MessageEmbed()
   .setTitle("Every command there is")
   .addFields(
     {name: "Rates", value: "qwordrate\nfurryrate\ngayrate\ndankrate\ngamerrate\nthotrate"},
     {name: "Talking to Robert", value: "hello/hi\nwill you marry me?\nsend a selfie\nsmell me"},
-    {name: "Voice Channel", value: "kpop\nkpopsongs\nvc (add one of the below)\n" + SUPERJSON.Noises.join(", ") + "\nleave"},
-    {name: "Others", value: "insult\npp/penis\nchode\nemoji\nservers\nping\nstatus (p/l/w)"}
+    {name: "Voice Channel", value: "kpop\nkpopsongs\nvc (add one of the below)\n" + Noises.join(", ") + "\nleave"},
+    {name: "Others", value: "insult\npp/penis\nchode\nfitorshit\nemoji\nservers\nping\nstatus (p/l/w)"}
   )
   .setThumbnail("https://cdn.discordapp.com/avatars/849711698737758298/9fb82f17f708ec69bc2a39c375d0ad2e.png")
   .setFooter("Type 'mr,' followed by the cmd you want to use");
@@ -107,14 +109,18 @@ function EmojiChar(Char) {
 const PingEmbed = new Discord.MessageEmbed()
   .setTitle("Ping")
 
+const FitOrShitEmbed = new Discord.MessageEmbed()
+  .setTitle("Fit or Shit")
+  .setFooter("Vote with the 👍 or 👎 reactions below")
+
+const FitOrShitCelebs = SUPERJSON.Celebrities
+
 var KpopSongs = SUPERJSON.Kpop.join("\n")
 KpopSongs = KpopSongs.split(".m4a").join("")
 const KpopEmbed = new Discord.MessageEmbed()
   .setTitle("All Kpop songs")
   .setDescription(KpopSongs)
   .setFooter("Type 'mr, kpop' in a voice channel to use it");
-
-const Noises = SUPERJSON.Noises
 
 function StatusActivity(Letter) {
   switch (Letter) {
@@ -213,8 +219,8 @@ client.on("message", msg => {
       break;
     
     case MsgContent.startsWith("mr, hello") || MsgContent.startsWith("mr, hi"):
-      AllArgs = SUPERJSON.DadTalk[Math.floor(Math.random() * SUPERJSON.DadTalk.length)]
-      msg.channel.send(AllArgs)
+      DadTalkReply = SUPERJSON.DadTalk[Math.floor(Math.random() * SUPERJSON.DadTalk.length)]
+      msg.channel.send(DadTalkReply)
       break;
 
     case MsgContent.startsWith("mr, smell me"):
@@ -278,12 +284,29 @@ client.on("message", msg => {
         msg.channel.send(PingEmbed)
       })
       break;
-      
+
+    case MsgContent.startsWith("mr, fitorshit"):
+      Celebrity = FitOrShitCelebs[Math.floor(Math.random() * FitOrShitCelebs.length)]
+      FitOrShitEmbed.setDescription(Celebrity.name)
+      try {
+        FitOrShitEmbed.setThumbnail(Celebrity.pic)
+      } 
+      catch (error) {
+        return;
+      }
+      FitOrShitEmbed.setColor(RandColour())
+      msg.channel.send(FitOrShitEmbed)
+        .then (function (Embed) {
+          Embed.react("👍")
+          Embed.react("👎")
+        })
+      break;
+
     case MsgContent.startsWith("mr, kpopsongs"):
       KpopEmbed.setColor(RandColour())
       msg.channel.send(KpopEmbed)
       break;
-      
+
     case MsgContent.startsWith("mr, kpop"):
       AllArgs = SUPERJSON.Kpop[Math.floor(Math.random() * SUPERJSON.Kpop.length)]
       var VC = msg.member.voice.channel;
@@ -372,5 +395,4 @@ client.on("message", msg => {
   
   }
 })
-
 client.login(process.env.DISCORDTOKEN)
