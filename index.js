@@ -288,7 +288,7 @@ client.on("message", msg => {
       Celebrity = FitOrShitCelebs[Math.floor(Math.random() * FitOrShitCelebs.length)]
       FitOrShitEmbed.setDescription(Celebrity.name)
       try {
-        FitOrShitEmbed.setThumbnail(Celebrity.pic)
+        FitOrShitEmbed.setImage(Celebrity.pic)
       } 
       catch (error) {
         return;
