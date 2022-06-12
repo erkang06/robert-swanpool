@@ -285,13 +285,19 @@ client.on("message", msg => {
       break;
 
     case MsgContent.startsWith("mr, fitorshit"):
-      Celebrity = FitOrShitCelebs[Math.floor(Math.random() * FitOrShitCelebs.length)]
-      FitOrShitEmbed.setDescription(Celebrity.name)
-      try {
-        FitOrShitEmbed.setImage(Celebrity.pic)
-      } 
-      catch (error) {
-        return;
+      if (MsgContent.length == 13) {
+        Celebrity = FitOrShitCelebs[Math.floor(Math.random() * FitOrShitCelebs.length)]
+        FitOrShitEmbed.setDescription(Celebrity.name)
+        try {
+          FitOrShitEmbed.setImage(Celebrity.pic)
+        } 
+        catch (error) {
+          return;
+        }
+      }
+      else {
+        FitOrShitEmbed.setDescription(msg.content.slice(14))
+        FitOrShitEmbed.setImage()
       }
       FitOrShitEmbed.setColor(RandColour())
       msg.channel.send(FitOrShitEmbed)
