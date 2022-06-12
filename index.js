@@ -290,7 +290,7 @@ client.on("message", msg => {
 
     case MsgContent.startsWith("mr, fitorshit"):
       if (MsgContent.length == 13) {
-        Celebrity = FitOrShitCelebs[Math.floor(Math.random() * FitOrShitCelebs.length)]
+        Celebrity = Celebrities[Math.floor(Math.random() * Celebrities.length)]
         FitOrShitEmbed.setDescription(Celebrity.name)
         try {
           FitOrShitEmbed.setImage(Celebrity.pic)
