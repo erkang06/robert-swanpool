@@ -102,6 +102,9 @@ function EmojiChar(Char) {
     case "/":
       return ":heavy_division_sign:"
       break;
+    case "=":
+      return ":heavy_equals_sign:"
+      break;
   }
 }
 
