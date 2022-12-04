@@ -1,17 +1,30 @@
 {
-  "name": "Robert-Swanpool",
+  "name": "robert-swanpool",
   "version": "1.0.0",
-  "engines": {
-    "node": "14.x"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "description": "cool bot",
+  "main": "index.js",
   "dependencies": {
+    "@discordjs/opus": "^0.5.3",
     "discord.js": "^12.5.3",
-    "sentencer": "^0.2.1",
-    "number-to-words": "^1.2.4",
+    "dotenv": "^10.0.0",
     "ffmpeg": "^0.0.4",
-    "@discordjs/opus": "^0.5.3"
-  }
+    "ffmpeg-static": "^4.4.0",
+    "number-to-words": "^1.2.4",
+    "sentencer": "^0.2.1"
+  },
+  "scripts": {
+    "test": "mr, help",
+    "start": "node index.js"
+  },
+  "author": "benny guo",
+  "license": "ISC",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erkang06/robert-swanpool.git"
+  },
+  "bugs": {
+    "url": "https://github.com/erkang06/robert-swanpool/issues"
+  },
+  "homepage": "https://github.com/erkang06/robert-swanpool#readme"
 }
