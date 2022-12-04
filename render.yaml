@@ -1,7 +1,6 @@
 services:
   - type: web
     name: discord
-    env: docker
     region: ohio
     plan: free
     branch: main
