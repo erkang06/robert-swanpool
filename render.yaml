@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: discord
+    env: docker
+    region: ohio
+    plan: free
+    branch: main
+    envVars:
+      - key: DISCORDTOKEN
+        value: ODQ5NzExNjk4NzM3NzU4Mjk4.YLfJrw.-_SAxFcBmchyazH0UHUTPV83HIY
+      - key: MYID
+       value: 709642818964160623
+      - key: PRAYAUTH
+       value: 204255221017214977
+      - key: PRAYCHAN
+       value: 828274056440446976
