@@ -1,0 +1,7 @@
+{
+  "buildpacks": [
+    "https://github.com/opendoor-labs/heroku-buildpack-p7zip.git",
+    "heroku/nodejs",
+    "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+  ]
+}
